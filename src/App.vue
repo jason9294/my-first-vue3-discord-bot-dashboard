@@ -17,7 +17,7 @@ const sendMsg = async() => {
   alert(message.value)
   const res = await axios({
     method: "post",
-    url: "http://localhost:5000/sendMsgToChannel",
+    url: "http://26.224.196.17:5000/sendMsgToChannel",
     data: {
       msg: message.value,
       channelID: channel.value
