@@ -37,6 +37,30 @@ app.post('/sendMsgToChannel', async(req, res) => {
 
 })
 
+app.post('/verify', async(req, res) => {
+  console.log(req.body.account)
+  console.log(req.body.password)
+    
+  try{
+    await axios({
+      method:"post",
+      url:`https://discord.com/api/channels/${req.body.channelID}/messages`,
+      headers:{
+          Authorization: `Bot ${process.env.BOT_TOKEN}`
+      },
+      data:{
+          content:req.body.msg
+      }
+    }) 
+  
+    res.send("Done!")
+  }
+  catch(e){
+    res.send('error')
+  }
+
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
